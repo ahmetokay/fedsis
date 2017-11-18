@@ -1,0 +1,40 @@
+server:
+    port: 9292
+
+logging:
+  level:
+    org.springframework.jdbc: INFO
+    org.springframework.data: INFO
+    org.springframework.boot: INFO
+    org.springframework.transaction: INFO
+
+spring:
+  batch:
+    initializer:
+      enabled: false
+  datasource:
+    dataSourceClassName: org.springframework.jdbc.datasource.DriverManagerDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://217.116.198.62:3306/twf
+    username: twf_deneme
+    password: kobil2013
+    testWhileIdle: true
+    testOnBorrow: true
+    validationQuery: SELECT 1
+    maxActive: 1
+  profiles:
+    active: app
+  output:
+    ansi:
+      enabled: ALWAYS
+  jpa:
+    showSql: true
+    generateDdl: false
+    properties:
+      hibernate:
+        enable_lazy_load_no_trans: true
+        dialect: org.hibernate.dialect.MySQL5Dialect
+    hibernate:
+      namingStrategy: org.hibernate.cfg.DefaultNamingStrategy
+      naming:
+        physicalStrategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
