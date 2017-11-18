@@ -6,11 +6,9 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 /**
  * Hello world!
- *
  */
 @SpringBootApplication
-public class FedsisServerApplication
-{
+public class FedsisServerApplication {
     public static void main(String[] args) {
         SpringApplicationBuilder builder = new SpringApplicationBuilder(FedsisServerApplication.class,
                 FedsisServerConfiguration.class);

@@ -1,6 +1,7 @@
 package tr.gov.fedsis.profile.entity;
 
 import com.core.tr.entity.BaseEntity;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -16,152 +17,152 @@ import javax.persistence.Table;
 @Table(name = "profile")
 public class Profile extends BaseEntity {
 
-  @Column(name = "name")
-  private String name;
+    @Column(name = "name")
+    private String name;
 
-  @Column(name = "middleName")
-  private String middleName;
+    @Column(name = "middleName")
+    private String middleName;
 
-  @Column(name = "surname")
-  private String surname;
+    @Column(name = "surname")
+    private String surname;
 
-  @Column(name = "fatherName")
-  private String fatherName;
+    @Column(name = "fatherName")
+    private String fatherName;
 
-  @Column(name = "motherName")
-  private String motherName;
+    @Column(name = "motherName")
+    private String motherName;
 
-  @Column(name = "gender")
+    @Column(name = "gender")
 //  @Enumerated(value = EnumType.STRING)
-  private String gender;
+    private String gender;
 
-  @Column(name = "bloodType")
+    @Column(name = "bloodType")
 //  @Enumerated(value = EnumType.STRING)
-  private String bloodType;
+    private String bloodType;
 
-  @Column(name = "city")
-  private String city;
+    @Column(name = "city")
+    private String city;
 
-  @Column(name = "country")
-  private String country;
+    @Column(name = "country")
+    private String country;
 
-  @Column(name = "passportNo")
-  private String passportNo;
+    @Column(name = "passportNo")
+    private String passportNo;
 
-  @Column(name = "password")
-  private String password;
+    @Column(name = "password")
+    private String password;
 
-  @Column(name = "isUser")
-  private Boolean isUser;
+    @Column(name = "isUser")
+    private Boolean isUser;
 
-  @Column(name = "nationalityId")
-  private String nationalityId;
+    @Column(name = "nationalityId")
+    private String nationalityId;
 
 
-  public Profile() {
-  }
+    public Profile() {
+    }
 
-  public String getName() {
-    return name;
-  }
+    public String getName() {
+        return name;
+    }
 
-  public void setName(String name) {
-    this.name = name;
-  }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-  public String getMiddleName() {
-    return middleName;
-  }
+    public String getMiddleName() {
+        return middleName;
+    }
 
-  public void setMiddleName(String middleName) {
-    this.middleName = middleName;
-  }
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
+    }
 
-  public String getSurname() {
-    return surname;
-  }
+    public String getSurname() {
+        return surname;
+    }
 
-  public void setSurname(String surname) {
-    this.surname = surname;
-  }
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
 
-  public String getFatherName() {
-    return fatherName;
-  }
+    public String getFatherName() {
+        return fatherName;
+    }
 
-  public void setFatherName(String fatherName) {
-    this.fatherName = fatherName;
-  }
+    public void setFatherName(String fatherName) {
+        this.fatherName = fatherName;
+    }
 
-  public String getMotherName() {
-    return motherName;
-  }
+    public String getMotherName() {
+        return motherName;
+    }
 
-  public void setMotherName(String motherName) {
-    this.motherName = motherName;
-  }
+    public void setMotherName(String motherName) {
+        this.motherName = motherName;
+    }
 
-  public String getGender() {
-    return gender;
-  }
+    public String getGender() {
+        return gender;
+    }
 
-  public void setGender(String gender) {
-    this.gender = gender;
-  }
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 
-  public String getBloodType() {
-    return bloodType;
-  }
+    public String getBloodType() {
+        return bloodType;
+    }
 
-  public void setBloodType(String bloodType) {
-    this.bloodType = bloodType;
-  }
+    public void setBloodType(String bloodType) {
+        this.bloodType = bloodType;
+    }
 
-  public String getCity() {
-    return city;
-  }
+    public String getCity() {
+        return city;
+    }
 
-  public void setCity(String city) {
-    this.city = city;
-  }
+    public void setCity(String city) {
+        this.city = city;
+    }
 
-  public String getCountry() {
-    return country;
-  }
+    public String getCountry() {
+        return country;
+    }
 
-  public void setCountry(String country) {
-    this.country = country;
-  }
+    public void setCountry(String country) {
+        this.country = country;
+    }
 
-  public String getPassportNo() {
-    return passportNo;
-  }
+    public String getPassportNo() {
+        return passportNo;
+    }
 
-  public void setPassportNo(String passportNo) {
-    this.passportNo = passportNo;
-  }
+    public void setPassportNo(String passportNo) {
+        this.passportNo = passportNo;
+    }
 
-  public String getPassword() {
-    return password;
-  }
+    public String getPassword() {
+        return password;
+    }
 
-  public void setPassword(String password) {
-    this.password = password;
-  }
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-  public Boolean getUser() {
-    return isUser;
-  }
+    public Boolean getUser() {
+        return isUser;
+    }
 
-  public void setUser(Boolean user) {
-    isUser = user;
-  }
+    public void setUser(Boolean user) {
+        isUser = user;
+    }
 
-  public String getNationalityId() {
-    return nationalityId;
-  }
+    public String getNationalityId() {
+        return nationalityId;
+    }
 
-  public void setNationalityId(String nationalityId) {
-    this.nationalityId = nationalityId;
-  }
+    public void setNationalityId(String nationalityId) {
+        this.nationalityId = nationalityId;
+    }
 }
