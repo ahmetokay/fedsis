@@ -51,9 +51,6 @@ public class Profile extends BaseEntity {
     @Column(name = "email")
     private String email;
 
-    @Column(name = "isUser")
-    private Boolean isUser;
-
     @Column(name = "mobile_number")
     private String mobileNumber;
 
@@ -182,14 +179,6 @@ public class Profile extends BaseEntity {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public Boolean getUser() {
-        return isUser;
-    }
-
-    public void setUser(Boolean user) {
-        isUser = user;
     }
 
     public String getMobileNumber() {

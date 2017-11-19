@@ -3,6 +3,8 @@ package tr.gov.fedsis.profile.model;
 import com.core.tr.model.BaseDto;
 
 /**
+ * Profil islemleri icin kullanilacak olan siniftir.
+ *
  * @author bocal
  */
 public class ProfileDto extends BaseDto {
@@ -21,17 +23,33 @@ public class ProfileDto extends BaseDto {
 
     private String bloodType;
 
-    private String city;
-
-    private String country;
-
     private String passportNo;
 
-    private String password;
+    private String socialNumber;
 
-    private boolean isUser;
+    private String address;
 
-    private String nationalityId;
+    private String postalCode;
+
+    private String email;
+
+    private String mobileNumber;
+
+    private String faxNumber;
+
+    private String tel1;
+
+    private String tel2;
+
+    private String website;
+
+    private NationalityDto nationalityDto;
+
+    private CountyDto countyDto;
+
+    private CityDto cityDto;
+
+    private CountryDto countryDto;
 
     public ProfileDto() {
     }
@@ -92,22 +110,6 @@ public class ProfileDto extends BaseDto {
         this.bloodType = bloodType;
     }
 
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
     public String getPassportNo() {
         return passportNo;
     }
@@ -116,27 +118,107 @@ public class ProfileDto extends BaseDto {
         this.passportNo = passportNo;
     }
 
-    public String getPassword() {
-        return password;
+    public String getSocialNumber() {
+        return socialNumber;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setSocialNumber(String socialNumber) {
+        this.socialNumber = socialNumber;
     }
 
-    public boolean isUser() {
-        return isUser;
+    public String getAddress() {
+        return address;
     }
 
-    public void setUser(boolean user) {
-        isUser = user;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public String getNationalityId() {
-        return nationalityId;
+    public String getPostalCode() {
+        return postalCode;
     }
 
-    public void setNationalityId(String nationalityId) {
-        this.nationalityId = nationalityId;
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getMobileNumber() {
+        return mobileNumber;
+    }
+
+    public void setMobileNumber(String mobileNumber) {
+        this.mobileNumber = mobileNumber;
+    }
+
+    public String getFaxNumber() {
+        return faxNumber;
+    }
+
+    public void setFaxNumber(String faxNumber) {
+        this.faxNumber = faxNumber;
+    }
+
+    public String getTel1() {
+        return tel1;
+    }
+
+    public void setTel1(String tel1) {
+        this.tel1 = tel1;
+    }
+
+    public String getTel2() {
+        return tel2;
+    }
+
+    public void setTel2(String tel2) {
+        this.tel2 = tel2;
+    }
+
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
+    }
+
+    public NationalityDto getNationalityDto() {
+        return nationalityDto;
+    }
+
+    public void setNationalityDto(NationalityDto nationalityDto) {
+        this.nationalityDto = nationalityDto;
+    }
+
+    public CountyDto getCountyDto() {
+        return countyDto;
+    }
+
+    public void setCountyDto(CountyDto countyDto) {
+        this.countyDto = countyDto;
+    }
+
+    public CityDto getCityDto() {
+        return cityDto;
+    }
+
+    public void setCityDto(CityDto cityDto) {
+        this.cityDto = cityDto;
+    }
+
+    public CountryDto getCountryDto() {
+        return countryDto;
+    }
+
+    public void setCountryDto(CountryDto countryDto) {
+        this.countryDto = countryDto;
     }
 }
