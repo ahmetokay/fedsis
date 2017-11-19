@@ -1,5 +1,7 @@
 package tr.gov.fedsis.profile.entity;
 
+import com.core.tr.entity.BaseEntity;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -9,7 +11,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "education_type")
-public class EducationType {
+public class EducationType extends BaseEntity {
 
     @Column(name = "name")
     private String name;
