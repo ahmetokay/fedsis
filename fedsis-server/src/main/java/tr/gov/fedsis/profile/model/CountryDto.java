@@ -1,7 +1,6 @@
 package tr.gov.fedsis.profile.model;
 
 import com.core.tr.model.BaseDto;
-
 import java.sql.Blob;
 
 /**
@@ -9,36 +8,36 @@ import java.sql.Blob;
  */
 public class CountryDto extends BaseDto {
 
-    private String name;
+  private String name;
 
-    private String shortName;
+  private String shortName;
 
-    private Blob flagImage;
+  private Blob flagImage;
 
-    public CountryDto() {
-    }
+  public CountryDto() {
+  }
 
-    public String getName() {
-        return name;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  public void setName(String name) {
+    this.name = name;
+  }
 
-    public String getShortName() {
-        return shortName;
-    }
+  public String getShortName() {
+    return shortName;
+  }
 
-    public void setShortName(String shortName) {
-        this.shortName = shortName;
-    }
+  public void setShortName(String shortName) {
+    this.shortName = shortName;
+  }
 
-    public Blob getFlagImage() {
-        return flagImage;
-    }
+  public Blob getFlagImage() {
+    return flagImage;
+  }
 
-    public void setFlagImage(Blob flagImage) {
-        this.flagImage = flagImage;
-    }
+  public void setFlagImage(Blob flagImage) {
+    this.flagImage = flagImage;
+  }
 }

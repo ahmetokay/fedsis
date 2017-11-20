@@ -16,5 +16,4 @@ import org.springframework.context.annotation.Configuration;
 @EntityScan(basePackages = {"tr"}, basePackageClasses = {BaseEntity.class})
 public class FedsisServerConfiguration extends RepositoryConfiguration {
 
-
 }

@@ -1,7 +1,6 @@
 package tr.gov.fedsis.profile.model;
 
 import com.core.tr.model.BaseDto;
-
 import java.util.Date;
 
 /**
@@ -9,66 +8,66 @@ import java.util.Date;
  */
 public class ProfileRelationDto extends BaseDto {
 
-    private Date startDate;
+  private Date startDate;
 
-    private Date endDate;
+  private Date endDate;
 
-    private DepartmentDto departmentDto;
+  private DepartmentDto departmentDto;
 
-    private ProfileTypeDto profileTypeDto;
+  private ProfileTypeDto profileTypeDto;
 
-    private ProfileDto profileDto;
+  private ProfileDto profileDto;
 
-    private ClubTeamDto clubTeamDto;
+  private ClubTeamDto clubTeamDto;
 
-    public ProfileRelationDto() {
-    }
+  public ProfileRelationDto() {
+  }
 
-    public Date getStartDate() {
-        return startDate;
-    }
+  public Date getStartDate() {
+    return startDate;
+  }
 
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
+  public void setStartDate(Date startDate) {
+    this.startDate = startDate;
+  }
 
-    public Date getEndDate() {
-        return endDate;
-    }
+  public Date getEndDate() {
+    return endDate;
+  }
 
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
-    }
+  public void setEndDate(Date endDate) {
+    this.endDate = endDate;
+  }
 
-    public DepartmentDto getDepartmentDto() {
-        return departmentDto;
-    }
+  public DepartmentDto getDepartmentDto() {
+    return departmentDto;
+  }
 
-    public void setDepartmentDto(DepartmentDto departmentDto) {
-        this.departmentDto = departmentDto;
-    }
+  public void setDepartmentDto(DepartmentDto departmentDto) {
+    this.departmentDto = departmentDto;
+  }
 
-    public ProfileTypeDto getProfileTypeDto() {
-        return profileTypeDto;
-    }
+  public ProfileTypeDto getProfileTypeDto() {
+    return profileTypeDto;
+  }
 
-    public void setProfileTypeDto(ProfileTypeDto profileTypeDto) {
-        this.profileTypeDto = profileTypeDto;
-    }
+  public void setProfileTypeDto(ProfileTypeDto profileTypeDto) {
+    this.profileTypeDto = profileTypeDto;
+  }
 
-    public ProfileDto getProfileDto() {
-        return profileDto;
-    }
+  public ProfileDto getProfileDto() {
+    return profileDto;
+  }
 
-    public void setProfileDto(ProfileDto profileDto) {
-        this.profileDto = profileDto;
-    }
+  public void setProfileDto(ProfileDto profileDto) {
+    this.profileDto = profileDto;
+  }
 
-    public ClubTeamDto getClubTeamDto() {
-        return clubTeamDto;
-    }
+  public ClubTeamDto getClubTeamDto() {
+    return clubTeamDto;
+  }
 
-    public void setClubTeamDto(ClubTeamDto clubTeamDto) {
-        this.clubTeamDto = clubTeamDto;
-    }
+  public void setClubTeamDto(ClubTeamDto clubTeamDto) {
+    this.clubTeamDto = clubTeamDto;
+  }
 }

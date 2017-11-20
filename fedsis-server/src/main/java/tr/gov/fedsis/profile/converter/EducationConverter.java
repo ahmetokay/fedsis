@@ -16,49 +16,50 @@ import tr.gov.fedsis.profile.model.ProfileDto;
 @Component
 public class EducationConverter extends AbstractBaseConverter<EducationDto, Education> {
 
-    private EducationTypeConverter educationTypeConverter;
+  private EducationTypeConverter educationTypeConverter;
 
-    private ProfileConverter profileConverter;
+  private ProfileConverter profileConverter;
 
-    @Autowired
-    public EducationConverter(EducationTypeConverter educationTypeConverter, ProfileConverter profileConverter) {
-        this.educationTypeConverter = educationTypeConverter;
-        this.profileConverter = profileConverter;
+  @Autowired
+  public EducationConverter(EducationTypeConverter educationTypeConverter,
+      ProfileConverter profileConverter) {
+    this.educationTypeConverter = educationTypeConverter;
+    this.profileConverter = profileConverter;
+  }
+
+  @Override
+  protected void doConvertToDto(EducationDto dto, Education entity) {
+    dto.setName(entity.getName());
+    dto.setDescription(entity.getDescription());
+    dto.setStartDate(entity.getStartDate());
+    dto.setEndDate(entity.getEndDate());
+
+    EducationType educationType = entity.getEducationType();
+    if (educationType != null) {
+      dto.setEducationTypeDto(educationTypeConverter.convertToDto(educationType));
     }
 
-    @Override
-    protected void doConvertToDto(EducationDto dto, Education entity) {
-        dto.setName(entity.getName());
-        dto.setDescription(entity.getDescription());
-        dto.setStartDate(entity.getStartDate());
-        dto.setEndDate(entity.getEndDate());
+    Profile profile = entity.getProfile();
+    if (profile != null) {
+      dto.setProfileDto(profileConverter.convertToDto(profile));
+    }
+  }
 
-        EducationType educationType = entity.getEducationType();
-        if (educationType != null) {
-            dto.setEducationTypeDto(educationTypeConverter.convertToDto(educationType));
-        }
+  @Override
+  protected void doConvertToEntity(Education entity, EducationDto dto) {
+    entity.setName(dto.getName());
+    entity.setDescription(dto.getDescription());
+    entity.setStartDate(dto.getStartDate());
+    entity.setEndDate(dto.getEndDate());
 
-        Profile profile = entity.getProfile();
-        if (profile != null) {
-            dto.setProfileDto(profileConverter.convertToDto(profile));
-        }
+    EducationTypeDto educationTypeDto = dto.getEducationTypeDto();
+    if (educationTypeDto != null) {
+      entity.setEducationType(educationTypeConverter.convertToEntity(educationTypeDto));
     }
 
-    @Override
-    protected void doConvertToEntity(Education entity, EducationDto dto) {
-        entity.setName(dto.getName());
-        entity.setDescription(dto.getDescription());
-        entity.setStartDate(dto.getStartDate());
-        entity.setEndDate(dto.getEndDate());
-
-        EducationTypeDto educationTypeDto = dto.getEducationTypeDto();
-        if (educationTypeDto != null) {
-            entity.setEducationType(educationTypeConverter.convertToEntity(educationTypeDto));
-        }
-
-        ProfileDto profileDto = dto.getProfileDto();
-        if (profileDto != null) {
-            entity.setProfile(profileConverter.convertToEntity(profileDto));
-        }
+    ProfileDto profileDto = dto.getProfileDto();
+    if (profileDto != null) {
+      entity.setProfile(profileConverter.convertToEntity(profileDto));
     }
+  }
 }

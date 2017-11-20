@@ -14,32 +14,32 @@ import tr.gov.fedsis.profile.model.UserDto;
 @Component
 public class UserConverter extends AbstractBaseConverter<UserDto, User> {
 
-    private ProfileConverter profileConverter;
+  private ProfileConverter profileConverter;
 
-    @Autowired
-    public UserConverter(ProfileConverter profileConverter) {
-        this.profileConverter = profileConverter;
+  @Autowired
+  public UserConverter(ProfileConverter profileConverter) {
+    this.profileConverter = profileConverter;
+  }
+
+  @Override
+  protected void doConvertToDto(UserDto dto, User entity) {
+    dto.setUsername(entity.getUsername());
+    dto.setPassword(entity.getPassword());
+
+    Profile profile = entity.getProfile();
+    if (profile != null) {
+      dto.setProfileDto(profileConverter.convertToDto(profile));
     }
+  }
 
-    @Override
-    protected void doConvertToDto(UserDto dto, User entity) {
-        dto.setUsername(entity.getUsername());
-        dto.setPassword(entity.getPassword());
+  @Override
+  protected void doConvertToEntity(User entity, UserDto dto) {
+    entity.setUsername(dto.getUsername());
+    entity.setPassword(dto.getPassword());
 
-        Profile profile = entity.getProfile();
-        if (profile != null) {
-            dto.setProfileDto(profileConverter.convertToDto(profile));
-        }
+    ProfileDto profileDto = dto.getProfileDto();
+    if (profileDto != null) {
+      entity.setProfile(profileConverter.convertToEntity(profileDto));
     }
-
-    @Override
-    protected void doConvertToEntity(User entity, UserDto dto) {
-        entity.setUsername(dto.getUsername());
-        entity.setPassword(dto.getPassword());
-
-        ProfileDto profileDto = dto.getProfileDto();
-        if (profileDto != null) {
-            entity.setProfile(profileConverter.convertToEntity(profileDto));
-        }
-    }
+  }
 }

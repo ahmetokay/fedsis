@@ -14,32 +14,32 @@ import tr.gov.fedsis.profile.model.CountryDto;
 @Component
 public class CityConverter extends AbstractBaseConverter<CityDto, City> {
 
-    private CountryConverter countryConverter;
+  private CountryConverter countryConverter;
 
-    @Autowired
-    public CityConverter(CountryConverter countryConverter) {
-        this.countryConverter = countryConverter;
+  @Autowired
+  public CityConverter(CountryConverter countryConverter) {
+    this.countryConverter = countryConverter;
+  }
+
+  @Override
+  protected void doConvertToDto(CityDto dto, City entity) {
+    dto.setName(entity.getName());
+    dto.setShortName(entity.getShortName());
+
+    Country country = entity.getCountry();
+    if (country != null) {
+      dto.setCountryDto(countryConverter.convertToDto(country));
     }
+  }
 
-    @Override
-    protected void doConvertToDto(CityDto dto, City entity) {
-        dto.setName(entity.getName());
-        dto.setShortName(entity.getShortName());
+  @Override
+  protected void doConvertToEntity(City entity, CityDto dto) {
+    entity.setName(dto.getName());
+    entity.setShortName(dto.getShortName());
 
-        Country country = entity.getCountry();
-        if (country != null) {
-            dto.setCountryDto(countryConverter.convertToDto(country));
-        }
+    CountryDto countryDto = dto.getCountryDto();
+    if (countryDto != null) {
+      entity.setCountry(countryConverter.convertToEntity(countryDto));
     }
-
-    @Override
-    protected void doConvertToEntity(City entity, CityDto dto) {
-        entity.setName(dto.getName());
-        entity.setShortName(dto.getShortName());
-
-        CountryDto countryDto = dto.getCountryDto();
-        if (countryDto != null) {
-            entity.setCountry(countryConverter.convertToEntity(countryDto));
-        }
-    }
+  }
 }

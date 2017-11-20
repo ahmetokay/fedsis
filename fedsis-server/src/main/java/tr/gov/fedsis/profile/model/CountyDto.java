@@ -7,36 +7,36 @@ import com.core.tr.model.BaseDto;
  */
 public class CountyDto extends BaseDto {
 
-    private String name;
+  private String name;
 
-    private String shortName;
+  private String shortName;
 
-    private CityDto cityDto;
+  private CityDto cityDto;
 
-    public CountyDto() {
-    }
+  public CountyDto() {
+  }
 
-    public String getName() {
-        return name;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  public void setName(String name) {
+    this.name = name;
+  }
 
-    public String getShortName() {
-        return shortName;
-    }
+  public String getShortName() {
+    return shortName;
+  }
 
-    public void setShortName(String shortName) {
-        this.shortName = shortName;
-    }
+  public void setShortName(String shortName) {
+    this.shortName = shortName;
+  }
 
-    public CityDto getCityDto() {
-        return cityDto;
-    }
+  public CityDto getCityDto() {
+    return cityDto;
+  }
 
-    public void setCityDto(CityDto cityDto) {
-        this.cityDto = cityDto;
-    }
+  public void setCityDto(CityDto cityDto) {
+    this.cityDto = cityDto;
+  }
 }

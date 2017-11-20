@@ -14,38 +14,38 @@ import tr.gov.fedsis.profile.model.DepartmentDto;
 @Component
 public class ClubConverter extends AbstractBaseConverter<ClubDto, Club> {
 
-    private DepartmentConverter departmentConverter;
+  private DepartmentConverter departmentConverter;
 
-    @Autowired
-    public ClubConverter(DepartmentConverter departmentConverter) {
-        this.departmentConverter = departmentConverter;
+  @Autowired
+  public ClubConverter(DepartmentConverter departmentConverter) {
+    this.departmentConverter = departmentConverter;
+  }
+
+  @Override
+  protected void doConvertToDto(ClubDto dto, Club entity) {
+    dto.setName(entity.getName());
+    dto.setShortName(entity.getShortName());
+    dto.setFormColor(entity.getFormColor());
+    dto.setClubImage(entity.getClubImage());
+    dto.setStartDate(entity.getStartDate());
+
+    Department department = entity.getDepartment();
+    if (department != null) {
+      dto.setDepartmentDto(departmentConverter.convertToDto(department));
     }
+  }
 
-    @Override
-    protected void doConvertToDto(ClubDto dto, Club entity) {
-        dto.setName(entity.getName());
-        dto.setShortName(entity.getShortName());
-        dto.setFormColor(entity.getFormColor());
-        dto.setClubImage(entity.getClubImage());
-        dto.setStartDate(entity.getStartDate());
+  @Override
+  protected void doConvertToEntity(Club entity, ClubDto dto) {
+    entity.setName(dto.getName());
+    entity.setShortName(dto.getShortName());
+    entity.setFormColor(dto.getFormColor());
+    entity.setClubImage(dto.getClubImage());
+    entity.setStartDate(dto.getStartDate());
 
-        Department department = entity.getDepartment();
-        if (department != null) {
-            dto.setDepartmentDto(departmentConverter.convertToDto(department));
-        }
+    DepartmentDto departmentDto = dto.getDepartmentDto();
+    if (departmentDto != null) {
+      entity.setDepartment(departmentConverter.convertToEntity(departmentDto));
     }
-
-    @Override
-    protected void doConvertToEntity(Club entity, ClubDto dto) {
-        entity.setName(dto.getName());
-        entity.setShortName(dto.getShortName());
-        entity.setFormColor(dto.getFormColor());
-        entity.setClubImage(dto.getClubImage());
-        entity.setStartDate(dto.getStartDate());
-
-        DepartmentDto departmentDto = dto.getDepartmentDto();
-        if (departmentDto != null) {
-            entity.setDepartment(departmentConverter.convertToEntity(departmentDto));
-        }
-    }
+  }
 }

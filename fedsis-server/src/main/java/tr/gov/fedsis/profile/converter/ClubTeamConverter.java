@@ -14,36 +14,36 @@ import tr.gov.fedsis.profile.model.ClubTeamDto;
 @Component
 public class ClubTeamConverter extends AbstractBaseConverter<ClubTeamDto, ClubTeam> {
 
-    private ClubConverter clubConverter;
+  private ClubConverter clubConverter;
 
-    @Autowired
-    public ClubTeamConverter(ClubConverter clubConverter) {
-        this.clubConverter = clubConverter;
+  @Autowired
+  public ClubTeamConverter(ClubConverter clubConverter) {
+    this.clubConverter = clubConverter;
+  }
+
+  @Override
+  protected void doConvertToDto(ClubTeamDto dto, ClubTeam entity) {
+    dto.setName(entity.getName());
+    dto.setDescription(entity.getDescription());
+    dto.setStartDate(entity.getStartDate());
+    dto.setEndDate(entity.getEndDate());
+
+    Club club = entity.getClub();
+    if (club != null) {
+      dto.setClubDto(clubConverter.convertToDto(club));
     }
+  }
 
-    @Override
-    protected void doConvertToDto(ClubTeamDto dto, ClubTeam entity) {
-        dto.setName(entity.getName());
-        dto.setDescription(entity.getDescription());
-        dto.setStartDate(entity.getStartDate());
-        dto.setEndDate(entity.getEndDate());
+  @Override
+  protected void doConvertToEntity(ClubTeam entity, ClubTeamDto dto) {
+    entity.setName(dto.getName());
+    entity.setDescription(dto.getDescription());
+    entity.setStartDate(dto.getStartDate());
+    entity.setEndDate(dto.getEndDate());
 
-        Club club = entity.getClub();
-        if (club != null) {
-            dto.setClubDto(clubConverter.convertToDto(club));
-        }
+    ClubDto clubDto = dto.getClubDto();
+    if (clubDto != null) {
+      entity.setClub(clubConverter.convertToEntity(clubDto));
     }
-
-    @Override
-    protected void doConvertToEntity(ClubTeam entity, ClubTeamDto dto) {
-        entity.setName(dto.getName());
-        entity.setDescription(dto.getDescription());
-        entity.setStartDate(dto.getStartDate());
-        entity.setEndDate(dto.getEndDate());
-
-        ClubDto clubDto = dto.getClubDto();
-        if (clubDto != null) {
-            entity.setClub(clubConverter.convertToEntity(clubDto));
-        }
-    }
+  }
 }

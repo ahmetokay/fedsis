@@ -1,9 +1,13 @@
 package tr.gov.fedsis.profile.entity;
 
 import com.core.tr.entity.BaseEntity;
-
-import javax.persistence.*;
 import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 /**
  * Created by ahmet on 19.11.2017.
@@ -12,76 +16,76 @@ import java.util.Date;
 @Table(name = "profile_relation")
 public class ProfileRelation extends BaseEntity {
 
-    @Column(name = "start_date")
-    private Date startDate;
+  @Column(name = "start_date")
+  private Date startDate;
 
-    @Column(name = "end_date")
-    private Date endDate;
+  @Column(name = "end_date")
+  private Date endDate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "fk_department_id")
-    private Department department;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "fk_department_id")
+  private Department department;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "fk_profile_type_id")
-    private ProfileType profileType;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "fk_profile_type_id")
+  private ProfileType profileType;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "fk_profile_id")
-    private Profile profile;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "fk_profile_id")
+  private Profile profile;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "fk_club_team_id")
-    private ClubTeam clubTeam;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "fk_club_team_id")
+  private ClubTeam clubTeam;
 
-    public ProfileRelation() {
-    }
+  public ProfileRelation() {
+  }
 
-    public Date getStartDate() {
-        return startDate;
-    }
+  public Date getStartDate() {
+    return startDate;
+  }
 
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
+  public void setStartDate(Date startDate) {
+    this.startDate = startDate;
+  }
 
-    public Date getEndDate() {
-        return endDate;
-    }
+  public Date getEndDate() {
+    return endDate;
+  }
 
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
-    }
+  public void setEndDate(Date endDate) {
+    this.endDate = endDate;
+  }
 
-    public Department getDepartment() {
-        return department;
-    }
+  public Department getDepartment() {
+    return department;
+  }
 
-    public void setDepartment(Department department) {
-        this.department = department;
-    }
+  public void setDepartment(Department department) {
+    this.department = department;
+  }
 
-    public ProfileType getProfileType() {
-        return profileType;
-    }
+  public ProfileType getProfileType() {
+    return profileType;
+  }
 
-    public void setProfileType(ProfileType profileType) {
-        this.profileType = profileType;
-    }
+  public void setProfileType(ProfileType profileType) {
+    this.profileType = profileType;
+  }
 
-    public Profile getProfile() {
-        return profile;
-    }
+  public Profile getProfile() {
+    return profile;
+  }
 
-    public void setProfile(Profile profile) {
-        this.profile = profile;
-    }
+  public void setProfile(Profile profile) {
+    this.profile = profile;
+  }
 
-    public ClubTeam getClubTeam() {
-        return clubTeam;
-    }
+  public ClubTeam getClubTeam() {
+    return clubTeam;
+  }
 
-    public void setClubTeam(ClubTeam clubTeam) {
-        this.clubTeam = clubTeam;
-    }
+  public void setClubTeam(ClubTeam clubTeam) {
+    this.clubTeam = clubTeam;
+  }
 }

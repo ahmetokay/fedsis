@@ -16,53 +16,54 @@ import tr.gov.fedsis.profile.model.ProfileRelationDto;
 @Component
 public class BankConverter extends AbstractBaseConverter<BankDto, Bank> {
 
-    private CurrencyConverter currencyConverter;
+  private CurrencyConverter currencyConverter;
 
-    private ProfileRelationConverter profileRelationConverter;
+  private ProfileRelationConverter profileRelationConverter;
 
-    @Autowired
-    public BankConverter(CurrencyConverter currencyConverter, ProfileRelationConverter profileRelationConverter) {
-        this.currencyConverter = currencyConverter;
-        this.profileRelationConverter = profileRelationConverter;
+  @Autowired
+  public BankConverter(CurrencyConverter currencyConverter,
+      ProfileRelationConverter profileRelationConverter) {
+    this.currencyConverter = currencyConverter;
+    this.profileRelationConverter = profileRelationConverter;
+  }
+
+  @Override
+  protected void doConvertToDto(BankDto dto, Bank entity) {
+    dto.setName(entity.getName());
+    dto.setDescription(entity.getDescription());
+    dto.setOwner(entity.getOwner());
+    dto.setIban(entity.getIban());
+    dto.setAccountNo(entity.getAccountNo());
+    dto.setBranchCode(entity.getBranchCode());
+
+    Currency currency = entity.getCurrency();
+    if (currency != null) {
+      dto.setCurrencyDto(currencyConverter.convertToDto(currency));
     }
 
-    @Override
-    protected void doConvertToDto(BankDto dto, Bank entity) {
-        dto.setName(entity.getName());
-        dto.setDescription(entity.getDescription());
-        dto.setOwner(entity.getOwner());
-        dto.setIban(entity.getIban());
-        dto.setAccountNo(entity.getAccountNo());
-        dto.setBranchCode(entity.getBranchCode());
+    ProfileRelation profileRelation = entity.getProfileRelation();
+    if (profileRelation != null) {
+      dto.setProfileRelationDto(profileRelationConverter.convertToDto(profileRelation));
+    }
+  }
 
-        Currency currency = entity.getCurrency();
-        if (currency != null) {
-            dto.setCurrencyDto(currencyConverter.convertToDto(currency));
-        }
+  @Override
+  protected void doConvertToEntity(Bank entity, BankDto dto) {
+    entity.setName(dto.getName());
+    entity.setDescription(dto.getDescription());
+    entity.setOwner(dto.getOwner());
+    entity.setIban(dto.getIban());
+    entity.setAccountNo(dto.getAccountNo());
+    entity.setBranchCode(dto.getBranchCode());
 
-        ProfileRelation profileRelation = entity.getProfileRelation();
-        if (profileRelation != null) {
-            dto.setProfileRelationDto(profileRelationConverter.convertToDto(profileRelation));
-        }
+    CurrencyDto currencyDto = dto.getCurrencyDto();
+    if (currencyDto != null) {
+      entity.setCurrency(currencyConverter.convertToEntity(currencyDto));
     }
 
-    @Override
-    protected void doConvertToEntity(Bank entity, BankDto dto) {
-        entity.setName(dto.getName());
-        entity.setDescription(dto.getDescription());
-        entity.setOwner(dto.getOwner());
-        entity.setIban(dto.getIban());
-        entity.setAccountNo(dto.getAccountNo());
-        entity.setBranchCode(dto.getBranchCode());
-
-        CurrencyDto currencyDto = dto.getCurrencyDto();
-        if (currencyDto != null) {
-            entity.setCurrency(currencyConverter.convertToEntity(currencyDto));
-        }
-
-        ProfileRelationDto profileRelationDto = dto.getProfileRelationDto();
-        if (profileRelationDto != null) {
-            entity.setProfileRelation(profileRelationConverter.convertToEntity(profileRelationDto));
-        }
+    ProfileRelationDto profileRelationDto = dto.getProfileRelationDto();
+    if (profileRelationDto != null) {
+      entity.setProfileRelation(profileRelationConverter.convertToEntity(profileRelationDto));
     }
+  }
 }

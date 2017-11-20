@@ -11,15 +11,15 @@ import tr.gov.fedsis.profile.model.EducationTypeDto;
 @Component
 public class EducationTypeConverter extends AbstractBaseConverter<EducationTypeDto, EducationType> {
 
-    @Override
-    protected void doConvertToDto(EducationTypeDto dto, EducationType entity) {
-        dto.setName(entity.getName());
-        dto.setDescription(entity.getDescription());
-    }
+  @Override
+  protected void doConvertToDto(EducationTypeDto dto, EducationType entity) {
+    dto.setName(entity.getName());
+    dto.setDescription(entity.getDescription());
+  }
 
-    @Override
-    protected void doConvertToEntity(EducationType entity, EducationTypeDto dto) {
-        entity.setName(dto.getName());
-        entity.setDescription(dto.getDescription());
-    }
+  @Override
+  protected void doConvertToEntity(EducationType entity, EducationTypeDto dto) {
+    entity.setName(dto.getName());
+    entity.setDescription(dto.getDescription());
+  }
 }

@@ -11,17 +11,17 @@ import tr.gov.fedsis.profile.model.NationalityDto;
 @Component
 public class NationalityConverter extends AbstractBaseConverter<NationalityDto, Nationality> {
 
-    @Override
-    protected void doConvertToDto(NationalityDto dto, Nationality entity) {
-        dto.setName(entity.getName());
-        dto.setShortName(entity.getShortName());
-        dto.setFlagImage(entity.getFlagImage());
-    }
+  @Override
+  protected void doConvertToDto(NationalityDto dto, Nationality entity) {
+    dto.setName(entity.getName());
+    dto.setShortName(entity.getShortName());
+    dto.setFlagImage(entity.getFlagImage());
+  }
 
-    @Override
-    protected void doConvertToEntity(Nationality entity, NationalityDto dto) {
-        entity.setName(dto.getName());
-        entity.setShortName(dto.getShortName());
-        entity.setFlagImage(dto.getFlagImage());
-    }
+  @Override
+  protected void doConvertToEntity(Nationality entity, NationalityDto dto) {
+    entity.setName(dto.getName());
+    entity.setShortName(dto.getShortName());
+    entity.setFlagImage(dto.getFlagImage());
+  }
 }

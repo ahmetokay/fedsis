@@ -1,6 +1,6 @@
 # Federasyon Yönetim Sistemi
 
-Kullanıcılar
+Sistem kullanıcıları
   - Sporcu
   - Antrenör
   - İl temsilcisi
