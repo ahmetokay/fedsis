@@ -18,7 +18,7 @@ CREATE TABLE `profile` (
 	`tel_1` varchar(15),
 	`tel_2` varchar(15),
 	`web_site` varchar(150),
-	`fk_nationality_id` DECIMAL NOT NULL,
+	`fk_nationality_id` DECIMAL,
 	`fk_country_id` DECIMAL,
 	`fk_city_id` DECIMAL,
 	`fk_county_id` DECIMAL,
@@ -27,7 +27,7 @@ CREATE TABLE `profile` (
 
 CREATE TABLE `nationality` (
 	`pkid` DECIMAL NOT NULL AUTO_INCREMENT,
-	`is_active` BOOLEAN NOT NULL AUTO_INCREMENT,
+	`is_active` BOOLEAN NOT NULL,
 	`name` varchar(50) NOT NULL,
 	`short_name` varchar(10) NOT NULL,
 	`flag_image` blob,
@@ -36,7 +36,7 @@ CREATE TABLE `nationality` (
 
 CREATE TABLE `user` (
 	`pkid` DECIMAL NOT NULL AUTO_INCREMENT,
-	`is_active` BOOLEAN NOT NULL AUTO_INCREMENT,
+	`is_active` BOOLEAN NOT NULL,
 	`username` varchar(30) NOT NULL UNIQUE,
 	`password` TEXT NOT NULL,
 	`fk_profile_id` DECIMAL,
@@ -45,28 +45,28 @@ CREATE TABLE `user` (
 
 CREATE TABLE `department` (
 	`pkid` DECIMAL NOT NULL AUTO_INCREMENT,
-	`is_active` BOOLEAN NOT NULL AUTO_INCREMENT,
+	`is_active` BOOLEAN NOT NULL,
 	`parent_id` DECIMAL,
 	`name` varchar(200) NOT NULL,
 	`description` varchar(200),
+	`is_kadro` BOOLEAN NOT NULL,
 	PRIMARY KEY (`pkid`)
 );
 
 CREATE TABLE `profile_relation` (
 	`pkid` DECIMAL NOT NULL AUTO_INCREMENT,
-	`is_active` BOOLEAN NOT NULL AUTO_INCREMENT,
+	`is_active` BOOLEAN NOT NULL,
 	`start_date` DATE NOT NULL,
 	`end_date` DATE NOT NULL,
-	`fk_department_id` DECIMAL,
+	`fk_department_id` DECIMAL NOT NULL,
 	`fk_profile_type_id` DECIMAL NOT NULL,
-	`fk_profile_id` DECIMAL,
-	`fk_club_team_id` DECIMAL,
+	`fk_profile_id` DECIMAL NOT NULL,
 	PRIMARY KEY (`pkid`)
 );
 
 CREATE TABLE `profile_type` (
 	`pkid` DECIMAL NOT NULL AUTO_INCREMENT,
-	`is_active` BOOLEAN NOT NULL AUTO_INCREMENT,
+	`is_active` BOOLEAN NOT NULL,
 	`name` varchar(40) NOT NULL,
 	`description` varchar(150),
 	PRIMARY KEY (`pkid`)
@@ -74,7 +74,7 @@ CREATE TABLE `profile_type` (
 
 CREATE TABLE `club` (
 	`pkid` DECIMAL NOT NULL AUTO_INCREMENT,
-	`is_active` BOOLEAN NOT NULL AUTO_INCREMENT,
+	`is_active` BOOLEAN NOT NULL,
 	`name` varchar(50) NOT NULL,
 	`short_name` varchar(10),
 	`form_color` varchar(20),
@@ -84,9 +84,9 @@ CREATE TABLE `club` (
 	PRIMARY KEY (`pkid`)
 );
 
-CREATE TABLE `club_team` (
+CREATE TABLE `team` (
 	`pkid` DECIMAL NOT NULL AUTO_INCREMENT,
-	`is_active` BOOLEAN NOT NULL AUTO_INCREMENT,
+	`is_active` BOOLEAN NOT NULL,
 	`name` varchar(50) NOT NULL,
 	`description` varchar(150),
 	`start_date` DATE,
@@ -97,7 +97,7 @@ CREATE TABLE `club_team` (
 
 CREATE TABLE `bank` (
 	`pkid` DECIMAL NOT NULL AUTO_INCREMENT,
-	`is_active` BOOLEAN NOT NULL AUTO_INCREMENT,
+	`is_active` BOOLEAN NOT NULL,
 	`name` varchar(50) NOT NULL,
 	`description` varchar(150),
 	`owner` varchar(50) NOT NULL,
@@ -111,7 +111,7 @@ CREATE TABLE `bank` (
 
 CREATE TABLE `currency` (
 	`pkid` DECIMAL NOT NULL AUTO_INCREMENT,
-	`is_active` BOOLEAN NOT NULL AUTO_INCREMENT,
+	`is_active` BOOLEAN NOT NULL,
 	`name` varchar(50) NOT NULL,
 	`description` varchar(150),
 	PRIMARY KEY (`pkid`)
@@ -119,7 +119,7 @@ CREATE TABLE `currency` (
 
 CREATE TABLE `body_size` (
 	`pkid` DECIMAL NOT NULL AUTO_INCREMENT,
-	`is_active` BOOLEAN NOT NULL AUTO_INCREMENT,
+	`is_active` BOOLEAN NOT NULL,
 	`length` varchar(5) NOT NULL,
 	`shoes_number` varchar(3) NOT NULL,
 	`sport_shoes_number` varchar(3) NOT NULL,
@@ -133,7 +133,7 @@ CREATE TABLE `body_size` (
 
 CREATE TABLE `city` (
 	`pkid` DECIMAL NOT NULL AUTO_INCREMENT,
-	`is_active` BOOLEAN NOT NULL AUTO_INCREMENT,
+	`is_active` BOOLEAN NOT NULL,
 	`short_name` varchar(10),
 	`name` varchar(50) NOT NULL,
 	`fk_country_id` DECIMAL NOT NULL,
@@ -142,7 +142,7 @@ CREATE TABLE `city` (
 
 CREATE TABLE `county` (
 	`pkid` DECIMAL NOT NULL AUTO_INCREMENT,
-	`is_active` BOOLEAN NOT NULL AUTO_INCREMENT,
+	`is_active` BOOLEAN NOT NULL,
 	`short_name` varchar(10),
 	`name` varchar(50) NOT NULL,
 	`fk_city_id` DECIMAL NOT NULL,
@@ -151,7 +151,7 @@ CREATE TABLE `county` (
 
 CREATE TABLE `country` (
 	`pkid` DECIMAL NOT NULL AUTO_INCREMENT,
-	`is_active` BOOLEAN NOT NULL AUTO_INCREMENT,
+	`is_active` BOOLEAN NOT NULL,
 	`short_name` varchar(10),
 	`name` varchar(50) NOT NULL,
 	`flag_image` blob,
@@ -160,8 +160,8 @@ CREATE TABLE `country` (
 
 CREATE TABLE `education` (
 	`pkid` DECIMAL NOT NULL AUTO_INCREMENT,
-	`is_active` BOOLEAN NOT NULL AUTO_INCREMENT,
-	`name` BINARY NOT NULL,
+	`is_active` BOOLEAN NOT NULL,
+	`name` varchar(50) NOT NULL,
 	`description` varchar(150),
 	`start_date` DATE,
 	`end_date` DATE,
@@ -172,9 +172,17 @@ CREATE TABLE `education` (
 
 CREATE TABLE `education_type` (
 	`pkid` DECIMAL NOT NULL AUTO_INCREMENT,
-	`is_active` BOOLEAN NOT NULL AUTO_INCREMENT,
+	`is_active` BOOLEAN NOT NULL,
 	`name` varchar(150) NOT NULL,
 	`description` varchar(150),
+	PRIMARY KEY (`pkid`)
+);
+
+CREATE TABLE `unit` (
+	`pkid` DECIMAL NOT NULL AUTO_INCREMENT,
+	`is_active` BOOLEAN NOT NULL,
+	`name` varchar(50) NOT NULL,
+	`description` varchar(150) NOT NULL,
 	PRIMARY KEY (`pkid`)
 );
 
@@ -196,11 +204,9 @@ ALTER TABLE `profile_relation` ADD CONSTRAINT `profile_relation_fk1` FOREIGN KEY
 
 ALTER TABLE `profile_relation` ADD CONSTRAINT `profile_relation_fk2` FOREIGN KEY (`fk_profile_id`) REFERENCES `profile`(`pkid`);
 
-ALTER TABLE `profile_relation` ADD CONSTRAINT `profile_relation_fk3` FOREIGN KEY (`fk_club_team_id`) REFERENCES `club_team`(`pkid`);
-
 ALTER TABLE `club` ADD CONSTRAINT `club_fk0` FOREIGN KEY (`fk_department_id`) REFERENCES `department`(`pkid`);
 
-ALTER TABLE `club_team` ADD CONSTRAINT `club_team_fk0` FOREIGN KEY (`fk_club_id`) REFERENCES `club`(`pkid`);
+ALTER TABLE `team` ADD CONSTRAINT `team_fk0` FOREIGN KEY (`fk_club_id`) REFERENCES `club`(`pkid`);
 
 ALTER TABLE `bank` ADD CONSTRAINT `bank_fk0` FOREIGN KEY (`fk_currency_id`) REFERENCES `currency`(`pkid`);
 
@@ -218,6 +224,28 @@ ALTER TABLE `education` ADD CONSTRAINT `education_fk1` FOREIGN KEY (`fk_profile_
 
 
 -- INSERT
+insert into `gender` values (1, true, 'Erkek', null);
+insert into `gender` values (2, true, 'Kadın', null);
+
+insert into `blood_type` values (1, true, 'AB Rh(+)', null);
+insert into `blood_type` values (2, true, 'AB Rh(-)', null);
+insert into `blood_type` values (3, true, 'A Rh(+)', null);
+insert into `blood_type` values (4, true, 'A Rh(-)', null);
+insert into `blood_type` values (5, true, 'B Rh(+)', null);
+insert into `blood_type` values (6, true, 'B Rh(-)', null);
+insert into `blood_type` values (7, true, '0 Rh(+)', null);
+insert into `blood_type` values (8, true, '0 Rh(-)', null);
+
+
+insert into `profile_type` values (1, true, 'Antrenör', null);
+insert into `profile_type` values (2, true, 'Hakem', null);
+insert into `profile_type` values (3, true, 'Sporcu', null);
+
+insert into `profile` values (1, true, 'Ahmet', null, 'Okay', 'Mehmet Ali', 'Selma', 'Erkek', null, null, '16228427198', null, null, 'ahmet.okay@outlook.com', '05326226445', null, null,null, null, null, null, null, null);
+insert into `profile` values (2, true, 'Bilal', null, 'Öcal', 'Mehmet Ali', 'Selma', 'Erkek', null, null, '16228427198', null, null, 'bilal.ocal@outlook.com', '05326226445', null, null,null, null, null, null, null, null);
+insert into `profile` values (3, true, 'Gürkan', null, 'Can', 'Mehmet Ali', 'Selma', 'Erkek', null, null, '16228427198', null, null, 'gurkan.can@outlook.com', '05326226445', null, null,null, null, null, null, null, null);
+insert into `profile` values (4, true, 'Ahmet', null, 'Yeğin', 'Mehmet Ali', 'Selma', 'Erkek', null, null, '16228427198', null, null, 'ismail.yegin@outlook.com', '05326226445', null, null,null, null, null, null, null, null);
+
 insert into `country` values (1, true, 'AD', 'Andorra', null);
 insert into `country` values (2, true, 'AE', 'Birleşik Arap Emirlikleri', null);
 insert into `country` values (3, true, 'AF', 'Afganistan', null);
@@ -468,7 +496,6 @@ insert into `country` values (247, true, 'YT', 'Mayotte', null);
 insert into `country` values (248, true, 'ZA', 'Güney Afrika', null);
 insert into `country` values (249, true, 'ZM', 'Zambiya', null);
 insert into `country` values (250, true, 'ZW', 'Zimbabve', null);
-
 
 insert into `currency` values (1, true, 'Türk Lirası', null);
 insert into `currency` values (2, true, 'Amerikan Doları', null);

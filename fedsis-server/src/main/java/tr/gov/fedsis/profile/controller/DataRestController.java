@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import tr.gov.fedsis.profile.model.BloodTypeDto;
 import tr.gov.fedsis.profile.model.CityDto;
 import tr.gov.fedsis.profile.model.CountryDto;
 import tr.gov.fedsis.profile.model.CountyDto;
+import tr.gov.fedsis.profile.model.GenderDto;
 import tr.gov.fedsis.profile.service.DataService;
 
 /**
@@ -40,5 +42,15 @@ public class DataRestController {
   @RequestMapping(value = "/country", method = RequestMethod.POST)
   public ResponseEntity<List<CountryDto>> country() {
     return new ResponseEntity<>(dataService.listCountry(), HttpStatus.OK);
+  }
+
+  @RequestMapping(value = "/gender", method = RequestMethod.POST)
+  public ResponseEntity<List<GenderDto>> gender() {
+    return new ResponseEntity<>(dataService.listGender(), HttpStatus.OK);
+  }
+
+  @RequestMapping(value = "/blood_type", method = RequestMethod.POST)
+  public ResponseEntity<List<BloodTypeDto>> bloodType() {
+    return new ResponseEntity<>(dataService.listBloodType(), HttpStatus.OK);
   }
 }
