@@ -15,8 +15,8 @@ spring:
   datasource:
     dataSourceClassName: org.springframework.jdbc.datasource.DriverManagerDataSource
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://217.116.198.62:3306/twf
-    username: twf_deneme
+    url: jdbc:mysql://217.116.198.62:3306/fedsis
+    username: fedsis
     password: kobil2013
     testWhileIdle: true
     testOnBorrow: true

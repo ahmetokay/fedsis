@@ -22,7 +22,7 @@ public abstract class BaseEntity implements EntityRule, Comparable<BaseEntity> {
   @Column(name = "pkid", updatable = false)
   private Long pkid;
 
-  @Column(name = "isactive")
+  @Column(name = "is_active")
   @NotNull
   private Boolean isActive;
 
