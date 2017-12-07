@@ -20,6 +20,7 @@
   <modules>
     <module>core-configuration</module>
     <module>core-converter</module>
+    <module>core-common</module>
     <module>core-domain</module>
     <module>core-model</module>
     <module>core-repository</module>
@@ -59,6 +60,12 @@
       <dependency>
         <groupId>com.core</groupId>
         <artifactId>core-converter</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.core</groupId>
+        <artifactId>core-common</artifactId>
         <version>${project.version}</version>
       </dependency>
 
